@@ -20,10 +20,10 @@ function PAYE() {
 }
 // NSSF
 function nhif() {
-    if (grossSalary <= 5999)} {
+    (grossSalary <= 5999)} {
         return 150;
     }
-    else if (grossSalary >= 6000 && grossSalary <= 7999) {
+      if (grossSalary >= 6000 && grossSalary <= 7999) {
         return 300;
     }
     else if (grossSalary >= 8000 && grossSalary <= 11999) {

@@ -1,42 +1,30 @@
-#!/usr/bin/node
-
-/*
-    Detect overspeeding to save lives!
-    
-    Speed is input an integer
-    the input is enumearated as follows:
-    Speed < 70; print OK!
-    Speed < 70, deduct 1 point for every 5 km and print total number of demerit point
-    suspend licence on more than 12 point
-*/
-
-const readline = require('readline');
-const input = readline.createInterface(
-    {
-        input: process.stdin,
-        output: process.stdout
+function speeddetector(){
+    let speed = document.getElementById("speed").ariaValueMax;
+    if(speed < 0){
+        document.getElementById('points'). innerHTML= "Input valid Speed"
     }
-);
-
-input.question("Speed of the car: ", function (speed){ 
-    let speed_of_car = parseInt(speed, 10);
-    if (isNaN(speed)){
-        process.stdout.write("Speed must be a numerical value\n");
-        process.stdout.write("use this a follows: On prompt input as numerical value e.g 50\n");
-        process.exit(1)
-    }else{
-       if (speed_of_car < 70){
-        process.stdout.write("Ok!\n");
-       } else{
-        const demerit_points = ((speed_of_car - 70) / 5);
-        Math.ceil(demerit_points);
-        process.stdout.write(`Points: ${demerit_points}\n`);
-            if (demerit_points >= 12) {
-                process.stdout.write("License suspended.\n");                
-            } else {
-                process.exit(0);                
-            }
-       }
+    else if(speed >= 0 && speed <= 70){
+        document.getElementById('points'). innerHTML= "speed is legal"
     }
-    input.close();
-});
+    else if (speed >= 60 && speed <= 90){
+        document.getElementById('points').innerHTML="illegal speed, 2 points"
+    }
+    else if (speed >= 90 && speed <= 100){
+        document.getElementById('points'). innerHTML="illegal speed, 4 points"
+    }
+    else if (speed >= 100 && speed <= 110){
+        document.getElementById('points').innerHTML="illegal speed, 6 points"
+    }
+    else if (speed >= 110 && speed <= 120){
+        document.getElementById('points').innerHTML="illegal speed, 8 points"
+    }
+    else if (speed >= 120 && speed <= 130){
+        document.getElementById('points').innerHTML="illegal speed, 10 points"
+    }
+    else if (speed >= 130){
+        document.getElementById('points').innerHTML="licence suspended"
+    } 
+    else {
+        document.getElementById('points').innerHTML="Input Speed."
+    }
+}
